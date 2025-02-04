@@ -1,0 +1,260 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ARcricInfo</title>
+  <!-- Include TailwindCSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Include FontAwesome for icons (optional) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    body {
+      background-color: #FFC72C; /* Australian yellow */
+      color: #005C5C; /* Australian green */
+    }
+    .section-bg {
+      background-color: #FFF9E3; /* Light yellow */
+    }
+    .btn-green {
+      background-color: #005C5C; /* Australian green */
+      color: #FFFFFF;
+    }
+    .btn-yellow {
+      background-color: #FFC72C; /* Australian yellow */
+      color: #005C5C;
+    }
+    nav {
+      background-color: #005C5C;
+    }
+    footer {
+      background-color: #003B3B;
+    }
+    @media (min-width: 640px) and (max-width: 1024px) {
+      #matches-container {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      .btn-green, .btn-yellow {
+        font-size: 14px;
+        padding: 8px 12px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Navbar -->
+  <nav class="text-white py-4">
+    <div class="container mx-auto flex justify-between items-center px-4">
+      <div class="flex items-center space-x-6">
+        <div class="text-2xl font-bold">ARcricInfo</div>
+        <div class="hidden md:flex space-x-6">
+          <a href="#live-scores" class="hover:text-yellow-300">Live Scores</a>
+          <a href="#icc-rankings" class="hover:text-yellow-300">ICC Top Rankings</a>
+        </div>
+      </div>
+      <div class="hidden md:flex space-x-6">
+        <a href="#home" class="hover:text-yellow-300">Home</a>
+        <a href="#series" class="hover:text-yellow-300">Series</a>
+        <a href="#ipl" class="hover:text-yellow-300">IPL</a>
+        <a href="#bbl" class="hover:text-yellow-300">BBL</a>
+        <a href="#about-us" class="hover:text-yellow-300">About Us</a>
+      </div>
+      <!-- Hamburger Menu for Mobile -->
+      <div class="md:hidden">
+        <button id="menu-toggle" class="text-white focus:outline-none">
+          <i class="fas fa-bars"></i>
+        </button>
+      </div>
+    </div>
+    <div id="mobile-menu" class="hidden md:hidden bg-gray-800 text-white space-y-2 px-4 py-2">
+      <a href="#live-scores" class="block hover:text-yellow-300">Live Scores</a>
+      <a href="#icc-rankings" class="block hover:text-yellow-300">ICC Top Rankings</a>
+      <a href="#home" class="block hover:text-yellow-300">Home</a>
+      <a href="#series" class="block hover:text-yellow-300">Series</a>
+      <a href="#ipl" class="block hover:text-yellow-300">IPL</a>
+      <a href="#bbl" class="block hover:text-yellow-300">BBL</a>
+      <a href="#about-us" class="block hover:text-yellow-300">About Us</a>
+    </div>
+  </nav>
+
+  <!-- Sections -->
+  <section id="home" class="py-10 section-bg">
+    <div class="container mx-auto px-4 text-center">
+      <h1 class="text-4xl font-bold mb-4">Welcome to ARcricInfo</h1>
+      <p class="text-lg">Your one-stop destination for cricket updates.</p>
+
+      <!-- Matches Section -->
+      <div class="mt-10">
+        <h2 class="text-3xl font-bold mb-6">MATCHES</h2>
+        <div id="matches-container" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+          <!-- Example Match Cards - Dynamically Loaded -->
+        </div>
+      </div>
+
+      <!-- Live Scores Navigation -->
+      <div class="mt-10">
+        <h2 class="text-3xl font-bold mb-4">Live Scores</h2>
+        <div class="flex flex-wrap justify-center space-x-4">
+          <button class="btn-green py-3 px-5 rounded hover:opacity-80" onclick="navigateToLiveSection('live')">Live</button>
+          <button class="btn-yellow py-3 px-5 rounded hover:opacity-80" onclick="navigateToLiveSection('recent')">Recent</button>
+          <button class="btn-green py-3 px-5 rounded hover:opacity-80" onclick="navigateToLiveSection('upcoming')">Upcoming</button>
+        </div>
+      </div>
+
+      <!-- ICC Rankings Navigation -->
+      <div class="mt-10">
+        <h2 class="text-3xl font-bold mb-4">ICC Top Rankings</h2>
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+          <div class="section-bg p-4 rounded-lg shadow-md">
+            <h3 class="text-xl font-bold mb-2">Men's Batting</h3>
+            <a href="#" class="text-blue-500 hover:underline">View Rankings</a>
+          </div>
+          <div class="section-bg p-4 rounded-lg shadow-md">
+            <h3 class="text-xl font-bold mb-2">Women's Batting</h3>
+            <a href="#" class="text-blue-500 hover:underline">View Rankings</a>
+          </div>
+          <div class="section-bg p-4 rounded-lg shadow-md">
+            <h3 class="text-xl font-bold mb-2">Teams</h3>
+            <a href="#" class="text-blue-500 hover:underline">View Rankings</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="live-scores" class="py-10 section-bg hidden">
+    <div class="container mx-auto px-4">
+      <h2 class="text-3xl font-bold mb-6">Live Scores</h2>
+      <p>Get the latest live scores from all ongoing matches.</p>
+    </div>
+  </section>
+
+  <section id="series" class="py-10 section-bg hidden">
+    <div class="container mx-auto px-4">
+      <h2 class="text-3xl font-bold mb-6">Series</h2>
+      <p>Explore upcoming and ongoing cricket series.</p>
+    </div>
+  </section>
+
+  <section id="ipl" class="py-10 section-bg hidden">
+    <div class="container mx-auto px-4">
+      <h2 class="text-3xl font-bold mb-6">IPL</h2>
+      <p>Latest updates and news from the Indian Premier League.</p>
+    </div>
+  </section>
+
+  <section id="bbl" class="py-10 section-bg hidden">
+    <div class="container mx-auto px-4">
+      <h2 class="text-3xl font-bold mb-6">BBL</h2>
+      <p>Stay tuned for updates on the Big Bash League.</p>
+    </div>
+  </section>
+
+  <section id="about-us" class="py-10 section-bg hidden">
+    <div class="container mx-auto px-4">
+      <h2 class="text-3xl font-bold mb-6">About Us</h2>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <!-- Available On -->
+        <div>
+          <h3 class="text-xl font-bold mb-4">Available On</h3>
+          <ul>
+            <li>Android</li>
+            <li>iOS</li>
+            <li>Windows</li>
+          </ul>
+        </div>
+
+        <!-- Follow Us On -->
+        <div>
+          <h3 class="text-xl font-bold mb-4">Follow Us On</h3>
+          <ul>
+            <li>Instagram</li>
+            <li>Facebook</li>
+            <li>Twitter</li>
+            <li>WhatsApp</li>
+          </ul>
+        </div>
+
+        <!-- Company -->
+        <div>
+          <h3 class="text-xl font-bold mb-4">Company</h3>
+          <ul>
+            <li>Privacy Policy</li>
+            <li>Terms of Use</li>
+            <li>Advertise</li>
+            <li>Career</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="text-white py-4">
+    <div class="container mx-auto px-4 text-center">
+      <p>&copy; 2024 ARcricInfo. All Rights Reserved.</p>
+    </div>
+  </footer>
+
+  <!-- JavaScript for Interactivity -->
+  <script>
+    const sections = document.querySelectorAll('section');
+    const matchesContainer = document.getElementById('matches-container');
+    const menuToggle = document.getElementById('menu-toggle');
+    const mobileMenu = document.getElementById('mobile-menu');
+
+    const matchData = [
+      { series: "ICC World Cup 2024", format: "ODI", date: "Dec 23, 2024", teams: "India vs Australia", isTournament: true },
+      { series: "Women's Ashes 2024", format: "Test", date: "Dec 23, 2024", teams: "England vs Australia", isTournament: false },
+      { series: "Ranji Trophy", format: "First Class", date: "Dec 23, 2024", teams: "Mumbai vs Delhi", isTournament: true },
+      { series: "PSL 2024", format: "T20", date: "Dec 23, 2024", teams: "Karachi Kings vs Lahore Qalandars", isTournament: true },
+    ];
+
+    function loadMatches() {
+      matchesContainer.innerHTML = "";
+      matchData.slice(0, 10).forEach(match => {
+         const matchCard = document.createElement('div');
+        matchCard.className = "bg-gray-200 p-4 rounded-lg shadow-md";
+        matchCard.innerHTML = `
+          <p class="text-sm font-bold">${match.teams}</p>
+          <p class="text-xs">${match.date}</p>
+          <div class="mt-4">
+            <button class="bg-blue-500 text-white py-1 px-3 rounded mr-2">Fantasy</button>
+            ${match.isTournament ? `<button class="bg-green-500 text-white py-1 px-3 rounded mr-2">Table</button>` : ""}
+            <button class="bg-yellow-500 text-white py-1 px-3 rounded">Schedule</button>
+          </div>
+        `;
+        matchesContainer.appendChild(matchCard);
+      });
+    }
+
+    function navigateToSection(id) {
+      sections.forEach(section => {
+        if (section.id === id) {
+          section.classList.remove('hidden');
+        } else {
+          section.classList.add('hidden');
+        }
+      });
+    }
+
+    function navigateToLiveSection(section) {
+      alert(`Navigating to ${section} section of live scores.`);
+    }
+
+    document.querySelectorAll('nav a').forEach(link => {
+      link.addEventListener('click', event => {
+        event.preventDefault();
+        const targetId = link.getAttribute('href').replace('#', '');
+        navigateToSection(targetId);
+      });
+    });
+
+    menuToggle.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
+    });
+
+    // Load matches on page load
+    document.addEventListener('DOMContentLoaded', loadMatches);
+  </script>
+</body>
+</html>
